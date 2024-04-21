@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        double[] expenses = new double[7];
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Сколько денег у вас осталось до зарплаты?");
@@ -13,7 +12,7 @@ public class Main {
 
         Converter converter = new Converter(94.8, 103.8, 13.1);
         DinnerAdvisor dinnerAdvisor = new DinnerAdvisor();
-        ExpensesManager expensesManager = new ExpensesManager(expenses);
+        ExpensesManager expensesManager = new ExpensesManager(new double[7]);
 
         while (true) {
             printMenu();

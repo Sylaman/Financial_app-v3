@@ -3,11 +3,11 @@ public class ExpensesManager {
     double[] expenses;
 
     public ExpensesManager(double[] expenses) {
-        this.expenses = new double[7];
+        this.expenses = expenses;
     }
 
     double saveExpense(double moneyBeforeSalary, double expense, int day) {
-        moneyBeforeSalary = moneyBeforeSalary - expense;
+        moneyBeforeSalary -= expense;
         expenses[day - 1] = expenses[day - 1] + expense;
         System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " + moneyBeforeSalary);
         if (moneyBeforeSalary < 1000) {
