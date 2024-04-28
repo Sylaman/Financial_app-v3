@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -10,9 +9,9 @@ public class Main {
         System.out.println("Сколько дней до зарплаты?");
         int daysBeforeSalary = scanner.nextInt();
 
-        Converter converter = new Converter(94.8, 103.8, 13.1);
+        Converter converter = new Converter(94.8,103.8,13.1);
         DinnerAdvisor dinnerAdvisor = new DinnerAdvisor();
-        ExpensesManager expensesManager = new ExpensesManager(new double[7]);
+        ExpensesManager expensesManager = new ExpensesManager();
 
         while (true) {
             printMenu();
@@ -26,16 +25,20 @@ public class Main {
             } else if (command == 2) {
                 dinnerAdvisor.getAdvice(moneyBeforeSalary, daysBeforeSalary);
             } else if (command == 3) {
-                System.out.println("За какой день вы хотите ввести трату: 1-ПН, 2-ВТ, 3-СР, 4-ЧТ, 5-ПТ, 6-СБ, 7-ВС?");
-                int day = scanner.nextInt();
                 System.out.println("Введите размер траты:");
                 double expense = scanner.nextDouble();
-                moneyBeforeSalary = expensesManager.saveExpense(moneyBeforeSalary, expense, day);
+                System.out.println("К какой категории относится трата?");
+                String category = scanner.next();
+                moneyBeforeSalary = ...
             } else if (command == 4) {
-                expensesManager.printAllExpenses();
+                expensesManager.printAllExpensesByCategories();
             } else if (command == 5) {
-                System.out.println("Самая большая сумма расходов на этой неделе составила "
-                        + expensesManager.findMaxExpense() + " руб.");
+                System.out.println("В какой категории искать?");
+                String category = scanner.next();
+                System.out.println("Самая большая трата в категории " + category + " составила "
+                        + ... + " руб.");
+            } else if (command == 6) {
+                expensesManager.removeAllExpenses();
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
@@ -50,8 +53,9 @@ public class Main {
         System.out.println("1 - Конвертировать валюту");
         System.out.println("2 - Получить совет");
         System.out.println("3 - Ввести трату");
-        System.out.println("4 - Показать траты за неделю");
-        System.out.println("5 - Показать самую большую сумму расходов за неделю");
+        System.out.println("4 - Показать траты по категориям");
+        System.out.println("5 - Показать самую большую трату в выбранной категории");
+        System.out.println("6 - Очистить таблицу трат");
         System.out.println("0 - Выход");
     }
 }
